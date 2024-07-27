@@ -1,0 +1,28 @@
+version: '3.8'
+services:
+  redis:
+    image: redis
+    container_name: redis
+    ports:
+      - "6371:6371"
+
+  springboot-app:
+    image: libms
+    container_name: springboot-app
+    ports:
+      - "8080:8080"
+    depends_on:
+      - redis
+      - mariadb
+
+  mariadb:
+    image: mariadb
+    container_name: mariadb
+    restart: always
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: S.ql_Vast
+      MYSQL_DATABASE: libmsdb
+      MYSQL_USER: root
+      MYSQL_PASSWORD: S.ql_Vast

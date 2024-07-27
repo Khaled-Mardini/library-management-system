@@ -1,0 +1,40 @@
+server:
+  error:
+    include-stacktrace: NEVER
+
+spring:
+  application:
+    name: libms
+
+  profiles:
+    active:
+      - dev
+
+  security:
+    user:
+      password: 123123
+  redis:
+    host: localhost
+    port: 6371
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+application:
+  cache:
+    ttl:
+      min: 45
+  security:
+    jwt:
+      expiration: 86400000
+      # a day
+      refresh-token:
+        expiration: 604800000
+        # 7 days
